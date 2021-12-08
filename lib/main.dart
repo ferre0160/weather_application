@@ -1,9 +1,12 @@
+// ignore_for_file: non_constant_identifier_names, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() => runApp(const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Weather App",
       home: Home(),
     ));
@@ -16,18 +19,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  void checkMethodSimple(int value) {
+  String weather_statement() {
     String desc = "";
 
     if (temp <= 1) {
-      desc == "Vriest";
+      desc = "Vriest";
     } else if (temp > 1 && temp <= 10) {
-      desc == 'Koud';
+      desc = 'Koud';
     } else if (temp > 10 && temp <= 20) {
-      desc == 'Mooi';
+      desc = 'Mooi';
     } else {
-      desc == 'warm';
+      desc = 'Warm';
     }
+    return desc;
   }
 
   var temp;
@@ -89,7 +93,7 @@ class _HomeState extends State<Home> {
                   Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: Text(
-                      "desc",
+                      weather_statement(),
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
